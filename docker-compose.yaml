@@ -5,6 +5,8 @@ services:
     volumes:
       - $PATH_DEVELOP_SCRIPTS:/home/jovyan/development
       - ./extractor:/home/jovyan/extractor
+      - ./connectors:/home/jovyan/connectors
+      - ./warehouse:/home/jovyan/warehouse
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,3 +17,21 @@ services:
       JUPYTER_ENABLE_LAB: "yes"
       JUPYTER_TOKEN: $JUPYTER_TOKEN
       PYTHONPATH: "/home/jovyan:${PYTHONPATH}"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: postgres_konfio
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: database
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
