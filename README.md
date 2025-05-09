@@ -9,23 +9,23 @@ git clone https://github.com/javieramayapat/konfio_data_challenge.git
 cd konfio_data_challenge/
 ```
 
-1. Duplica el archivo de entorno:
+2. Duplica el archivo de entorno:
 ```bash
 cp .env.example .env
 ```
 
-1. Ubícate dentro de la carpeta config-data-challenge y obtén la ruta absoluta con:
+3. Ubícate dentro de la carpeta config-data-challenge y obtén la ruta absoluta con:
 ```bash
 pwd
 ```
 
-3.Copia esa ruta y pégala en la variable PATH_DEVELOP_SCRIPTS dentro del archivo .env.
+4.Copia esa ruta y pégala en la variable PATH_DEVELOP_SCRIPTS dentro del archivo .env.
 Asegúrate de que la ruta termine en /develop y que uses barras diagonales (/), por ejemplo:
 ```bash
 PATH_DEVELOP_SCRIPTS=/home/usuario/ruta/proyecto/development
 ```
 
-4. Verifica que la carpeta development/ exista dentro del proyecto para evitar errores al montar los volúmenes.Luego, puedes continuar con:
+5. Verifica que la carpeta development/ exista dentro del proyecto para evitar errores al montar los volúmenes.Luego, puedes continuar con:
 
 ```bash
 docker-compose up --build
